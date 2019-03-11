@@ -64,4 +64,10 @@ public class BookController {
         IOUtils.copy(in, response.getOutputStream());
     }
 
+    @GetMapping("/byAuthor")
+    public String byAuthor(@RequestParam("authorId") int authorId, ModelMap modelMap) {
+        modelMap.addAttribute("books", bookRepository.findAllByAuthorId(authorId));
+        return "booksByAuthor";
+    }
+
 }

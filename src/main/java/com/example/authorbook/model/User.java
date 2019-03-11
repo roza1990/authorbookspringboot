@@ -13,8 +13,9 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "author")
-public class Author {
+@Table(name = "user")
+public class User {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +27,12 @@ public class Author {
     private String surname;
     @Column
     private String email;
-    @Column
-    private int age;
-    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
-    List<Book> books;
-}
 
+    @ManyToMany
+    @JoinTable(name = "user_book",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id",
+                    referencedColumnName = "id"))
+    List<Book> bookList;
+
+}
