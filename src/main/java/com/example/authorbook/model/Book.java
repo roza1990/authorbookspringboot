@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.*;
 
 @Data
 @AllArgsConstructor
@@ -23,13 +24,13 @@ public class Book {
     private String title;
     @Column(columnDefinition = "text")
     private String description;
-    @Column
-    private int count;
-    @Column
-    private double price;
     @Column(name = "pic_url")
     private String picUrl;
     @ManyToOne
     private Author author;
+    @ManyToMany(mappedBy = "bookList")
+    Set<User> userList;
+
+
 
 }

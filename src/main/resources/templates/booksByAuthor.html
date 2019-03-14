@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -14,8 +14,7 @@
         <td>id</td>
         <td>title</td>
         <td>description</td>
-        <td>price</td>
-        <td>count</td>
+
         <td>Action</td>
     </tr>
     <tr th:each="book : ${books}">
@@ -23,11 +22,10 @@
         <td th:text="${book.id}"></td>
         <td th:text="${book.title}"></td>
         <td th:text="${book.description}"></td>
-        <td th:text="${book.price}"></td>
-        <td th:text="${book.count}"></td>
+
         <td><a th:href="@{/book/delete(id=${book.id})}">Delete</a></td>
     </tr>
 </table>
-
+<a href="/">Go back</a>
 </body>
 </html>

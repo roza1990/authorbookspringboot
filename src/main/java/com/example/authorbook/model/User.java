@@ -1,14 +1,15 @@
 package com.example.authorbook.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Data
+@EqualsAndHashCode(exclude = "bookList")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -28,11 +29,14 @@ public class User {
     @Column
     private String email;
 
-    @ManyToMany
+
+    @ManyToMany()
     @JoinTable(name = "user_book",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "book_id",
                     referencedColumnName = "id"))
-    List<Book> bookList;
+
+    Set<Book> bookList=new HashSet<>();
+
 
 }

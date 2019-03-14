@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/user/add" method="post">
+    <input type="text" name="email" placeholder="email"> <br>
+    <input type="text" name="name" placeholder="name"> <br>
+    <input type="text" name="surname" placeholder="surname"> <br>
+
+    <input type="checkbox" th:each="b : ${books}" th:value="${b.id}" th:text="${b.title}" name="bookList">
+
+
+    <input type="submit" value="Add user"> <br>
+</form>
+</body>
+</html>

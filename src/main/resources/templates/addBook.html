@@ -8,8 +8,6 @@
 <form action="/book/add" method="post" enctype="multipart/form-data">
     <input type="text" name="title" placeholder="title"> <br>
     <input type="text" name="description" placeholder="description"> <br>
-    <input type="number" name="price" placeholder="price"> <br>
-    <input type="number" name="count" placeholder="count"> <br>
     Author: <select name="author.id"><br>
     <option th:each="a : ${authors}" th:value="${a.id}" th:text="${a.name + ' ' + a.surname}">
     </option>
